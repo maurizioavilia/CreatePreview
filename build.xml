@@ -1,0 +1,23 @@
+<project name="" default="compile">
+    <target name="compile" depends="clean">
+        <mkdir dir="classes"/>
+        <javac srcdir="src" destdir="classes"/>
+    </target>    
+    <target name="clean">
+        <delete dir="classes"/>
+    </target>
+    <target name="javadoc">
+        <delete dir="doc"/>
+        <javadoc packagenames="*" sourcepath="src" destdir="doc" author="true" version="true" use="true" package="true"/>    
+    </target>
+
+    <target name="jar" depends="compile" description="create a Jar file for the application">
+        <jar destfile="CreatePreview.jar">
+            <fileset dir="classes" includes="**/*.class"/>
+            <manifest>
+                <attribute name="Main-Class" value="RiduciImmagini"/>
+            </manifest>
+        </jar>
+    </target>    
+
+</project>
